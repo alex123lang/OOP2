@@ -7,7 +7,7 @@ def test_category():
     assert category.description == "test"
     assert category.products == []
     assert category.category_quantity == 0
-    assert category.unique_products == 0
+    assert category.total_quantity == 0
 
 
 def test_product():
@@ -15,4 +15,4 @@ def test_product():
     assert product.name == "test"
     assert product.description == "test"
     assert product.price == 0
-    assert product.stock == 0
+    assert product.product_quantity == 0
