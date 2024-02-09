@@ -16,3 +16,4 @@ def test_product():
     assert product.description == "test"
     assert product.price == 0
     assert product.product_quantity == 0
+
