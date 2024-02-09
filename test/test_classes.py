@@ -3,7 +3,7 @@ from src.product import Product
 
 
 def test_category():
-    category = Category("test", "test", [], 0, 0)
+    category = Category("test", "test", [])
     assert category.name == "test"
     assert category.description == "test"
     assert category.products == []
