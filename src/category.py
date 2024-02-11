@@ -11,9 +11,22 @@ class Category:
     def __init__(self, name, description, products):
         self.name = name
         self.description = description
-        self.products = products
-        self.category_quantity = 0
-        self.total_quantity = 0
+        self.__products = products
 
         Category.category_quantity += 1
         Category.total_quantity += len(products)
+
+    @property
+    def products(self):
+        return self.__products
+
+    def add_product(self, item):
+        self.__products.append(item)
+        Category.total_quantity += 1
+
+    @property
+    def format_products(self):
+        product_list = []
+        for product in self.__products:
+            product_list.append(f"{product.name}, {product.price} руб. Остаток: {product.product_quantity} шт.")
+        return product_list
