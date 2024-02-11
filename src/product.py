@@ -9,3 +9,18 @@ class Product:
         self.description = description
         self.price = price
         self.product_quantity = product_quantity
+
+    @staticmethod
+    def create_product(name, description, price, product_quantity):
+        return Product(name, description, price, product_quantity)
+
+    @property
+    def price(self):
+        return self._price
+
+    @price.setter
+    def price(self, value):
+        if value <= 0:
+            print("Цена введена некорректно")
+        else:
+            self._price = value
