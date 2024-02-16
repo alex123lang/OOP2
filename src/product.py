@@ -24,3 +24,9 @@ class Product:
             print("Цена введена некорректно")
         else:
             self._price = value
+
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.product_quantity} шт."
+
+    def __add__(self, other):
+        return (self.price * self.product_quantity) + (other.price * other.product_quantity)
