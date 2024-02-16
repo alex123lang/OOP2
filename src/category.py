@@ -30,3 +30,9 @@ class Category:
         for product in self.__products:
             product_list.append(f"{product.name}, {product.price} руб. Остаток: {product.product_quantity} шт.")
         return product_list
+
+    def __len__(self):
+        return len(self.__products)
+
+    def __str__(self):
+        return f'{self.name}, количество продуктов: {len(self)} шт.'
