@@ -18,6 +18,10 @@ def test_category():
     assert category.format_products == ["test1, 10000 руб. Остаток: 5 шт.", "test2, 5000 руб. Остаток: 10 шт.", "test3, 7000 руб. Остаток: 15 шт."]
     assert Category.total_quantity == 3
 
+    assert len(category) == 3
+
+    assert str(category) == "test, количество продуктов: 3 шт."
+
 
 def test_product():
     product = Product("test", "test description", 10_000, 5)
@@ -34,4 +38,10 @@ def test_product():
 
     product.price = 12_000
     assert product.price == 12_000
+
+    product2 = Product("test2", "test description2", 13_000, 7)
+    assert str(product2) == "test2, 13000 руб. Остаток: 7 шт."
+
+    product3 = Product("test3", "test description3", 14_000, 8)
+    assert product + product3 == 172_000
 
