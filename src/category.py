@@ -32,7 +32,8 @@ class Category:
         return product_list
 
     def __len__(self):
-        return len(self.__products)
+        return sum(product.product_quantity for product in self.__products)
 
     def __str__(self):
-        return f'{self.name}, количество продуктов: {len(self)} шт.'
+        total_count = sum(product.product_quantity for product in self.__products)
+        return f'{self.name}, количество продуктов: {total_count} шт.'
