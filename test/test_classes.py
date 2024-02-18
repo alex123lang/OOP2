@@ -18,9 +18,9 @@ def test_category():
     assert category.format_products == ["test1, 10000 руб. Остаток: 5 шт.", "test2, 5000 руб. Остаток: 10 шт.", "test3, 7000 руб. Остаток: 15 шт."]
     assert Category.total_quantity == 3
 
-    assert len(category) == 3
+    assert len(category) == 30
 
-    assert str(category) == "test, количество продуктов: 3 шт."
+    assert str(category) == "test, количество продуктов: 30 шт."
 
 
 def test_product():
