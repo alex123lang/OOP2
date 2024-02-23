@@ -1,3 +1,6 @@
+from product import *
+
+
 class Category:
     name: str
     description: str
@@ -21,8 +24,9 @@ class Category:
         return self.__products
 
     def add_product(self, item):
-        self.__products.append(item)
-        Category.total_quantity += 1
+        if isinstance(item, Product):
+            self.__products.append(item)
+            Category.total_quantity += 1
 
     @property
     def format_products(self):
