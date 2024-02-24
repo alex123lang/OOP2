@@ -1,4 +1,8 @@
-class Product:
+from abc import ABC
+from mixin import MixinOutput
+
+
+class Base(ABC):
     name: str
     description: str
     price: float
@@ -9,6 +13,9 @@ class Product:
         self.description = description
         self.price = price
         self.product_quantity = product_quantity
+
+
+class Product(Base, MixinOutput):
 
     @staticmethod
     def create_product(name, description, price, product_quantity):
@@ -34,7 +41,7 @@ class Product:
         return (self.price * self.product_quantity) + (other.price * other.product_quantity)
 
 
-class Smartphones(Product):
+class Smartphones(Base, MixinOutput):
 
     efficiency: float
     model: str
@@ -49,7 +56,7 @@ class Smartphones(Product):
         self.colour = colour
 
 
-class LawnGrass(Product):
+class LawnGrass(Base, MixinOutput):
 
     made_in: str
     germination: int
@@ -60,4 +67,3 @@ class LawnGrass(Product):
         self.made_in = made_in
         self.germination = germination
         self.colour = colour
-
