@@ -1,7 +1,8 @@
-from product import *
+from product import Product
+from mixin import MixinOutput
 
 
-class Category:
+class Category(MixinOutput):
     name: str
     description: str
     products: list
