@@ -1,4 +1,4 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from mixin import MixinOutput
 
 
@@ -14,11 +14,14 @@ class Base(ABC):
         self.price = price
         self.product_quantity = product_quantity
 
+    @abstractmethod
+    def create_product(self, *args):
+        pass
+
 
 class Product(Base, MixinOutput):
 
-    @staticmethod
-    def create_product(name, description, price, product_quantity):
+    def create_product(self, name, description, price, product_quantity):
         return Product(name, description, price, product_quantity)
 
     @property
@@ -55,6 +58,9 @@ class Smartphones(Base, MixinOutput):
         self.internal_memory = internal_memory
         self.colour = colour
 
+    def create_product(self, name, description, price, product_quantity, efficiency, model, internal_memory, colour):
+        return Smartphones(name, description, price, product_quantity, efficiency, model, internal_memory, colour)
+
 
 class LawnGrass(Base, MixinOutput):
 
@@ -67,3 +73,6 @@ class LawnGrass(Base, MixinOutput):
         self.made_in = made_in
         self.germination = germination
         self.colour = colour
+
+    def create_product(self, name, description, price, product_quantity, made_in, germination, colour):
+        return LawnGrass(name, description, price, product_quantity, made_in, germination, colour)
