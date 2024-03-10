@@ -1,5 +1,5 @@
-from product import Product
-from mixin import MixinOutput
+from src.product import Product
+from src.mixin import MixinOutput
 
 
 class Category(MixinOutput):

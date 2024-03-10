@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from mixin import MixinOutput
+from src.mixin import MixinOutput
 
 
 class Base(ABC):
@@ -15,13 +15,17 @@ class Base(ABC):
         self.product_quantity = product_quantity
 
     @abstractmethod
-    def create_product(self, *args):
+    def count_products(self):
         pass
 
 
 class Product(Base, MixinOutput):
 
-    def create_product(self, name, description, price, product_quantity):
+    def count_products(self):
+        return self.product_quantity
+
+    @staticmethod
+    def create_product(name, description, price, product_quantity, *args):
         return Product(name, description, price, product_quantity)
 
     @property
@@ -44,7 +48,7 @@ class Product(Base, MixinOutput):
         return (self.price * self.product_quantity) + (other.price * other.product_quantity)
 
 
-class Smartphones(Base, MixinOutput):
+class Smartphones(Product, MixinOutput):
 
     efficiency: float
     model: str
@@ -58,11 +62,11 @@ class Smartphones(Base, MixinOutput):
         self.internal_memory = internal_memory
         self.colour = colour
 
-    def create_product(self, name, description, price, product_quantity, efficiency, model, internal_memory, colour):
-        return Smartphones(name, description, price, product_quantity, efficiency, model, internal_memory, colour)
+    def count_products(self):
+        return self.product_quantity
 
 
-class LawnGrass(Base, MixinOutput):
+class LawnGrass(Product, MixinOutput):
 
     made_in: str
     germination: int
@@ -74,5 +78,8 @@ class LawnGrass(Base, MixinOutput):
         self.germination = germination
         self.colour = colour
 
-    def create_product(self, name, description, price, product_quantity, made_in, germination, colour):
-        return LawnGrass(name, description, price, product_quantity, made_in, germination, colour)
+    def count_products(self):
+        return self.product_quantity
+
+
+

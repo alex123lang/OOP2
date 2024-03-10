@@ -44,3 +44,4 @@ def test_product():
 
     product3 = Product("test3", "test description3", 14_000, 8)
     assert product + product3 == 172_000
+
