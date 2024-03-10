@@ -3,16 +3,9 @@ from src.mixin import MixinOutput
 
 
 class Base(ABC):
-    name: str
-    description: str
-    price: float
-    product_quantity: int
 
-    def __init__(self, name, description, price, product_quantity):
-        self.name = name
-        self.description = description
-        self.price = price
-        self.product_quantity = product_quantity
+    def __init__(self, *args, **kwargs):
+        pass
 
     @abstractmethod
     def count_products(self):
@@ -20,12 +13,23 @@ class Base(ABC):
 
 
 class Product(Base, MixinOutput):
+    name: str
+    description: str
+    price: float
+    product_quantity: int
+
+    def __init__(self, name, description, price, product_quantity):
+        super().__init__()
+        self.name = name
+        self.description = description
+        self.price = price
+        self.product_quantity = product_quantity
 
     def count_products(self):
         return self.product_quantity
 
     @staticmethod
-    def create_product(name, description, price, product_quantity, *args):
+    def create_product(name, description, price, product_quantity):
         return Product(name, description, price, product_quantity)
 
     @property
