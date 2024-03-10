@@ -4,7 +4,6 @@ from product import Product
 
 
 def main():
-    product = Product
     data = products
     categories = []
     for i in data:
@@ -18,7 +17,7 @@ def main():
         categories.append(category)
 
     for category in categories:
-        print(f'{category.name}\n{category.description}\n{product}\n')
+        print(f'{category.name}\n{category.description}\n{category}\n')
 
         for product in category.products:
             print(f'{product.name}\n{product.description}\n{product.price}\n{product.product_quantity}\n')
