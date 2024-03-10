@@ -44,7 +44,7 @@ class Category(MixinOutput):
             average_price = total_price / sum(product.product_quantity for product in self.__products)
             return average_price
         except ZeroDivisionError:
-            return f'Нельзя делить на ноль'
+            return 0
 
     def __len__(self):
         return sum(product.product_quantity for product in self.__products)
