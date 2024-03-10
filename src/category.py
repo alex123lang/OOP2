@@ -26,6 +26,8 @@ class Category(MixinOutput):
 
     def add_product(self, item):
         if isinstance(item, Product):
+            if item.product_quantity == 0:
+                raise ValueError
             self.__products.append(item)
             Category.total_quantity += 1
 
@@ -35,6 +37,14 @@ class Category(MixinOutput):
         for product in self.__products:
             product_list.append(f"{product.name}, {product.price} руб. Остаток: {product.product_quantity} шт.")
         return product_list
+
+    def average_price(self):
+        try:
+            total_price = sum(product.price for product in self.__products)
+            average_price = total_price / sum(product.product_quantity for product in self.__products)
+            return average_price
+        except ZeroDivisionError:
+            return f'Нельзя делить на ноль'
 
     def __len__(self):
         return sum(product.product_quantity for product in self.__products)
