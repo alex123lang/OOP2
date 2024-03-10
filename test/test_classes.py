@@ -1,3 +1,5 @@
+import pytest
+
 from src.category import *
 from src.product import *
 
@@ -22,6 +24,19 @@ def test_category():
 
     assert str(category) == "test, количество продуктов: 30 шт."
 
+    product4 = Product("test4", "test description4", 8_000, 0)
+
+    with pytest.raises(ValueError):
+        category.add_product(product4)
+
+    product5 = Product("test5", "test description5", 9_000, 0)
+
+    products1 = [product4, product5]
+
+    category1 = Category("test1", "test description1", products1)
+
+    assert category1.average_price() == 'Нельзя делить на ноль'
+
 
 def test_product():
     product = Product("test", "test description", 10_000, 5)
@@ -44,4 +59,5 @@ def test_product():
 
     product3 = Product("test3", "test description3", 14_000, 8)
     assert product + product3 == 172_000
+
 
