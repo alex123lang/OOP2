@@ -35,7 +35,7 @@ def test_category():
 
     category1 = Category("test1", "test description1", products1)
 
-    assert category1.average_price() == 'Нельзя делить на ноль'
+    assert category1.average_price() == 0
 
 
 def test_product():
