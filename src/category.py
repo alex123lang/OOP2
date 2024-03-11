@@ -27,7 +27,7 @@ class Category(MixinOutput):
     def add_product(self, item):
         if isinstance(item, Product):
             if item.product_quantity == 0:
-                raise ValueError
+                raise ValueError("Нельзя добавить товар с нулевым количеством!")
             self.__products.append(item)
             Category.total_quantity += 1
 
